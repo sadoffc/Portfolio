@@ -1,31 +1,30 @@
 export default class Game {
-    constructor(){
+    constructor() {
         this.turn = "X";
-        this.board = new Array (9).fill(null);
+        this.board = new Array(9).fill(null);
     }
-
 
     nextTurn() {
         this.turn = this.turn === "X" ? "O" : "X";
     }
 
     makeMove(i) {
-        if(!this.isInProgress()) {
+        if (!this.isInProgress()) {
             return;
         }
 
-        if(this.board[i]) {
+        if (this.board[i]) {
             return;
         }
 
         this.board[i] = this.turn;
 
-        if(!this.findWinningCombo()) {
+        if (!this.findWinningCombination()) {
             this.nextTurn();
         }
     }
 
-    findWinningCombo() {
+    findWinningCombination() {
         const winningCombinations = [
             [0, 1, 2],
             [3, 4, 5],
@@ -40,7 +39,7 @@ export default class Game {
         for (const combination of winningCombinations) {
             const [a, b, c] = combination;
 
-            if (this.board[a] && (this.board[a] === this.board[b] && this.board[a] === this.board[c])){
+            if (this.board[a] && (this.board[a] === this.board[b] && this.board[a] === this.board[c])) {
                 return combination;
             }
         }
@@ -49,6 +48,6 @@ export default class Game {
     }
 
     isInProgress() {
-        return !this.findWinningCombo() && this.board.includes(null);
+        return !this.findWinningCombination() && this.board.includes(null);
     }
 }
