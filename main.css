@@ -12,6 +12,11 @@
     flex-direction: column;
 }
 
+#board__wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .header {
     display: flex;
     align-items: center;
