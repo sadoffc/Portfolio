@@ -75,3 +75,10 @@
 .board__tile--winner {
     color: green;
 }
+
+/* SMALL PHONES, LARGE SMARTPHONES */
+@media (max-width: 550px) {
+    .board__tile {
+        font-size: 40px;
+    }
+}
